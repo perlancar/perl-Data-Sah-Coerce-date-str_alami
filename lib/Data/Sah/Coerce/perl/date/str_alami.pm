@@ -9,6 +9,7 @@ use warnings;
 
 sub meta {
     +{
+        v => 2,
         enable_by_default => 0,
         might_die => 1,
         prio => 60, # a bit lower than normal
