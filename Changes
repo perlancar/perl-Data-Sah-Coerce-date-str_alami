@@ -1,5 +1,11 @@
 Revision history for Data-Sah-Coerce-perl-date-str_alami
 
+0.003   2016-05-22 (PERLANCAR)
+
+        - Update rule metadata version 1 -> 2 (Data::Sah::Coerce 0.011+): add
+          'precludes'.
+
+
 0.002   2016-05-20 (PERLANCAR)
 
 	- Add rules: str_alami_en, str_alami_id.
