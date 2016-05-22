@@ -12,6 +12,7 @@ sub meta {
         enable_by_default => 0,
         might_die => 1,
         prio => 60, # a bit lower than normal
+        precludes => [qr/^str_alami(_.+)?$/],
     };
 }
 
