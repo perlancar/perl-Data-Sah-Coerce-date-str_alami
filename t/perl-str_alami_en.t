@@ -12,7 +12,7 @@ subtest "coerce_to=DateTime" => sub {
     test_needs "DateTime";
     test_needs "DateTime::Format::Alami::EN";
 
-    my $c = gen_coercer(type=>"date", coerce_to=>"DateTime", coerce_from=>["str_alami_en"]);
+    my $c = gen_coercer(type=>"date", coerce_to=>"DateTime", coerce_rules=>["str_alami_en"]);
 
     # uncoerced
     is_deeply($c->({}), {}, "uncoerced");
