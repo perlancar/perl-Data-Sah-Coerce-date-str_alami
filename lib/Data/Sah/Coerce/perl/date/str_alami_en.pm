@@ -13,7 +13,7 @@ sub meta {
         enable_by_default => 0,
         might_die => 1,
         prio => 60, # a bit lower than normal
-        precludes => [qr/\Astr_alami(_.+)?\z/],
+        precludes => [qr/\Astr_alami(_.+)?\z/, 'str_natural'],
     };
 }
 
