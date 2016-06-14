@@ -35,4 +35,39 @@ subtest "coerce_to=DateTime" => sub {
     #}
 };
 
+subtest "coerce_to=Time::Moment" => sub {
+    test_needs "DateTime::Format::Alami";
+    test_needs "Time::Moment";
+
+    my $c = gen_coercer(type=>"date", coerce_to=>"Time::Moment", coerce_rules=>["str_alami"]);
+
+    # uncoerced
+    is_deeply($c->({}), {}, "uncoerced");
+
+    {
+        local $ENV{LANG} = 'en_US.UTF-8';
+
+        my $d = $c->("may 19, 2016");
+        is(ref($d), 'Time::Moment');
+        is($d->strftime("%Y-%m-%d"), "2016-05-19");
+    }
+};
+
+subtest "coerce_to=float(epoch)" => sub {
+    test_needs "DateTime::Format::Alami";
+
+    my $c = gen_coercer(type=>"date", coerce_to=>"float(epoch)", coerce_rules=>["str_alami"]);
+
+    # uncoerced
+    is_deeply($c->({}), {}, "uncoerced");
+
+    {
+        local $ENV{LANG} = 'en_US.UTF-8';
+
+        my $d = $c->("may 19, 2016");
+        ok(!ref($d));
+        is($d, 1463616000);
+    }
+};
+
 done_testing;
