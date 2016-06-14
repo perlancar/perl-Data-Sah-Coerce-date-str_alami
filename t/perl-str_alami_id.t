@@ -22,4 +22,31 @@ subtest "coerce_to=DateTime" => sub {
     is($d->ymd, "2016-05-19");
 };
 
+subtest "coerce_to=Time::Moment" => sub {
+    test_needs "DateTime::Format::Alami::ID";
+    test_needs "Time::Moment";
+
+    my $c = gen_coercer(type=>"date", coerce_to=>"Time::Moment", coerce_rules=>["str_alami_id"]);
+
+    # uncoerced
+    is_deeply($c->({}), {}, "uncoerced");
+
+    my $d = $c->("19 mei 2016");
+    is(ref($d), 'Time::Moment');
+    is($d->strftime("%Y-%m-%d"), "2016-05-19");
+};
+
+subtest "coerce_to=float(epoch)" => sub {
+    test_needs "DateTime::Format::Alami::ID";
+
+    my $c = gen_coercer(type=>"date", coerce_to=>"float(epoch)", coerce_rules=>["str_alami_id"]);
+
+    # uncoerced
+    is_deeply($c->({}), {}, "uncoerced");
+
+    my $d = $c->("19 mei 2016");
+    ok(!ref($d));
+    is($d, 1463616000);
+};
+
 done_testing;
