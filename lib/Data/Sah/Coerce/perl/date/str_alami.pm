@@ -55,4 +55,4 @@ sub coerce {
 
 The rule is not enabled by default. You can enable it in a schema using e.g.:
 
- ["array*", of=>"date", "x.perl.coerce_to"=>"DateTime", "x.perl.coerce_rules"=>["str_alami"]]
+ ["date", "x.perl.coerce_rules"=>["str_alami"]]
