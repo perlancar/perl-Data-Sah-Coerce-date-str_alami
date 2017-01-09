@@ -1,3 +1,15 @@
+0.007   2017-01-09 (PERLANCAR)
+
+	- Split str_alami_{en,id} to their own dists.
+
+	- Die on parse failure.
+
+	- [dist] Make DateTime::Format::Alami::{ID,EN} a RuntimeRequires prereq
+	  for convenience of user.
+
+	- Fix/simplify examples.
+
+
 0.006   2016-06-14 (PERLANCAR)
 
 	- Don't require coerce_to=DateTime when using this rule.
